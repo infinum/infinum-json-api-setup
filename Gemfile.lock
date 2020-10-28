@@ -2,7 +2,9 @@ PATH
   remote: .
   specs:
     infinum_json_api_setup (0.0.1)
+      jsonapi_parameters
       rails
+      responders
 
 GEM
   remote: https://rubygems.org/
@@ -71,6 +73,9 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
+    jsonapi_parameters (2.2.0)
+      actionpack (>= 4.1.8)
+      activesupport (>= 4.1.8)
     loofah (2.7.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -121,6 +126,9 @@ GEM
     rainbow (3.0.0)
     rake (13.0.1)
     regexp_parser (1.8.2)
+    responders (3.0.1)
+      actionpack (>= 5.0)
+      railties (>= 5.0)
     rexml (3.2.4)
     rubocop (1.0.0)
       parallel (~> 1.10)
@@ -156,7 +164,8 @@ PLATFORMS
 
 DEPENDENCIES
   infinum_json_api_setup!
-  rubocop
+  rake
+  rubocop (~> 1.0)
 
 BUNDLED WITH
    2.1.4
