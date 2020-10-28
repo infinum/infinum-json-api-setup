@@ -12,8 +12,8 @@ module InfinumJsonApiSetup
       # @option opts [String] :message
       def initialize(object: nil, message: nil)
         @details =
-          details_from_object(object) || message || I18n.t("http.errors.#{http_status}.detail")
-        @title = I18n.t("http.errors.#{http_status}.title")
+          details_from_object(object) || message || I18n.t("json_api.errors.#{http_status}.detail")
+        @title = I18n.t("json_api.errors.#{http_status}.title")
       end
 
       # @return [String]

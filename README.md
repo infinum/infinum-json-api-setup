@@ -18,8 +18,8 @@ $> rails generate infinum_json_api_setup:install
 Define responder
 ```
 module Api
-  class Responder < ActionController::Responder
-    include ::InfinumJsonApiSetup::JsonApi::Responder
+  class BaseController < ActionController::API
+    self.responder = InfinumJsonApiSetup::JsonApi::Responder
   end
 end
 ```

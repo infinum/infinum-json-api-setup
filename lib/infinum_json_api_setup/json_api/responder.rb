@@ -1,6 +1,6 @@
 module InfinumJsonApiSetup
   module JsonApi
-    module Responder
+    class Responder < ActionController::Responder
       def to_json_api
         if !get? && has_errors?
           display_errors
@@ -18,6 +18,8 @@ module InfinumJsonApiSetup
           display resource, status: :created
         elsif delete?
           head :no_content
+        else
+          raise 'respond_with should be used only for standard REST CRUD actions'
         end
       end
 
