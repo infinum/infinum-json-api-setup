@@ -1,7 +1,7 @@
 module InfinumJsonApiSetup
   module JsonApi
     class ParameterParser
-      include JsonApi::Parameters
+      include ::JsonApi::Parameters
 
       def initialize(parameters)
         @parameters = parameters
