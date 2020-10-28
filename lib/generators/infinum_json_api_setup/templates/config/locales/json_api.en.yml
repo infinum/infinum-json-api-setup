@@ -1,0 +1,24 @@
+en:
+  json_api:
+    errors:
+      bad_request:
+        title: Bad request
+        detail: Bad request
+      not_found:
+        title: Not found
+        detail: Resource not found
+      forbidden:
+        title: Forbidden
+        detail: User is not authorized to use this resource
+      unauthorized:
+        title: Unauthorized
+        detail: Must be logged in to perform this action
+      unprocessable_entity:
+        title: Unprocessable Entity
+        detail: Cannot process request
+      conflict:
+        title: Invalid Attribute
+        detail: Something is missing
+      failed_dependency:
+        title: Failed Dependency
+        detail: Cannot process request due to external dependent service
