@@ -4,10 +4,14 @@ Preconfigured setup for building JSON:API endpoints
 
 # Installation
 
-Inside your `Gemfile` add the following:
-
+Add infinum JSON:API setup gem to your Gemfile:
 ```ruby
 gem 'infinum_json_api_setup'
+```
+
+Next, run the generator:
+```bash
+$> rails generate infinum_json_api_setup:install
 ```
 
 # Application configuration
