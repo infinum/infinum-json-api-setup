@@ -7,4 +7,4 @@ require 'infinum_json_api_setup/json_api/error_serializer'
 require 'infinum_json_api_setup/json_api/serializer_options'
 require 'infinum_json_api_setup/json_api/responder'
 
-require 'infinum_json_api_setup/json_api/rails'
+require 'infinum_json_api_setup/rails'
