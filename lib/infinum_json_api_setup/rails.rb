@@ -1,6 +1,6 @@
 Mime::Type.register('application/vnd.api+json', :json_api)
 
-ActionDispatch::Request.parameter_parsers[:json_api] = ->(body) do
+ActionDispatch::Request.parameter_parsers[:json_api] = lambda do |body|
   JsonApi::ParameterParser.new(
     ActiveSupport::JSON.decode(body)
   ).parameters
@@ -12,10 +12,12 @@ ActiveSupport.on_load(:action_controller) do
     self.content_type ||= Mime[:json_api]
 
     ActiveSupport::Notifications.instrument('render.json_api', resources: resources, opts: opts) do
-      break ::JsonApi::ErrorSerializer.new(resources).serialized_json if resources.is_a?(::HTTP::Error::Base)
+      if resources.is_a?(JsonApiInfinumSetup::Error::Base)
+        break JsonApiInfinumSetup::JsonApi::ErrorSerializer.new(resources).serialized_json
+      end
 
       serializer = opts.delete(:serializer) { |key| raise "#{key} not specified" }
-      options = JsonApi::SerializerOptions.new(
+      options = JsonApiInfinumSetup::JsonApi::SerializerOptions.new(
         params: params.to_unsafe_h, pagination_details: opts[:pagination_details]
       ).build
 
