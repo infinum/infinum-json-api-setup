@@ -16,7 +16,9 @@ ActiveSupport.on_load(:action_controller) do
         break InfinumJsonApiSetup::JsonApi::ErrorSerializer.new(resources).serialized_json
       end
 
-      serializer = opts.delete(:serializer) { |key| raise "#{key} not specified" }
+      serializer = opts.delete(:serializer) do
+        "Api::V1::#{controller_name.classify.pluralize}::Serializer".constantize
+      end
       options = InfinumJsonApiSetup::JsonApi::SerializerOptions.new(
         params: params.to_unsafe_h, pagination_details: opts[:pagination_details]
       ).build
