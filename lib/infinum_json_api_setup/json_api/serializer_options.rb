@@ -12,6 +12,7 @@ module InfinumJsonApiSetup
       # @return [Hash]
       def build
         {
+          meta: meta,
           links: links,
           fields: fields,
           include: include
@@ -21,6 +22,18 @@ module InfinumJsonApiSetup
       private
 
       attr_reader :params, :pagination_details
+
+      def meta
+        return {} unless pagination_details
+
+        {
+          current_page: pagination_details.page,
+          total_pages: pagination_details.pages,
+          total_count: pagination_details.count,
+          padding: pagination_details.vars.fetch(:outset).to_i,
+          max_page_size: Pagy::VARS[:max_items]
+        }
+      end
 
       def links
         return {} unless pagination_details
