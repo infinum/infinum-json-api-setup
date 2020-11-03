@@ -20,8 +20,19 @@ module Api
   class BaseController < ActionController::API
     include InfinumJsonApiSetup::JsonApi::ErrorHandling
     include InfinumJsonApiSetup::JsonApi::ContentNegotiation
-    
+
     self.responder = InfinumJsonApiSetup::JsonApi::Responder
   end
+end
+```
+
+# RSpec configuration
+
+spec/rails_helper.rb
+
+```
+RSpec.configure do |config|
+  config.include InfinumJsonApiSetup::Rspec::Helpers::RequestHelper, type: :request
+  config.include InfinumJsonApiSetup::Rspec::Helpers::ResponseHelper, type: :request
 end
 ```
