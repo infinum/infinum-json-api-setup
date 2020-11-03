@@ -43,6 +43,8 @@ module InfinumJsonApiSetup
 
     class Forbidden < Base; end
 
+    class BadRequest < Base; end
+
     class Gone < Base; end
 
     class Unauthorized < Base; end
