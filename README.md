@@ -15,10 +15,12 @@ $> rails generate infinum_json_api_setup:install
 ```
 
 # Application configuration
-Define responder
 ```
 module Api
   class BaseController < ActionController::API
+    include InfinumJsonApiSetup::JsonApi::ErrorHandling
+    include InfinumJsonApiSetup::JsonApi::ContentNegotiation
+    
     self.responder = InfinumJsonApiSetup::JsonApi::Responder
   end
 end
