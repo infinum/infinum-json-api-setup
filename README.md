@@ -28,11 +28,15 @@ end
 
 # RSpec configuration
 
-spec/rails_helper.rb
+spec/support/infinum_json_api_setup.rb
 
 ```
+require 'infinum_json_api_setup/rspec'
+
 RSpec.configure do |config|
+  # Helpers
   config.include InfinumJsonApiSetup::Rspec::Helpers::RequestHelper, type: :request
   config.include InfinumJsonApiSetup::Rspec::Helpers::ResponseHelper, type: :request
 end
+
 ```
