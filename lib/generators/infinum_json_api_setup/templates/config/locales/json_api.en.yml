@@ -22,3 +22,6 @@ en:
       failed_dependency:
         title: Failed Dependency
         detail: Cannot process request due to external dependent service
+      internal_server_error:
+        title: Internal Server Error
+        detail: Something went wrong
