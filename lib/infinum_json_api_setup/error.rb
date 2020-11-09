@@ -57,5 +57,7 @@ module InfinumJsonApiSetup
         :not_found
       end
     end
+
+    class InternalServerError < Base; end
   end
 end
