@@ -1,11 +1,5 @@
 Mime::Type.register('application/vnd.api+json', :json_api)
 
-ActionDispatch::Request.parameter_parsers[:json_api] = lambda do |body|
-  InfinumJsonApiSetup::JsonApi::ParameterParser.new(
-    ActiveSupport::JSON.decode(body)
-  ).parameters
-end
-
 ActiveSupport.on_load(:action_controller) do
   ActionController::Renderers.add(:json_api) do |resources, opts|
     # Renderer proc is evaluated in the controller context.
