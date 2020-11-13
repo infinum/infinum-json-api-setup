@@ -37,6 +37,10 @@ RSpec.configure do |config|
   # Helpers
   config.include InfinumJsonApiSetup::Rspec::Helpers::RequestHelper, type: :request
   config.include InfinumJsonApiSetup::Rspec::Helpers::ResponseHelper, type: :request
+
+  # Schema paths
+  config.schema_response_root = Rails.application.root.join('path/to/response_schemas')
+  config.schema_request_root = Rails.application.root.join('path/to/request_schemas')
 end
 
 ```
