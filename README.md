@@ -6,7 +6,7 @@ Preconfigured setup for building JSON:API endpoints
 
 Add infinum JSON:API setup gem to your Gemfile:
 ```ruby
-gem 'infinum_json_api_setup'
+gem 'infinum_json_api_setup', github: 'infinum/infinum-json-api-setup'
 ```
 
 Next, run the generator:
@@ -37,6 +37,10 @@ RSpec.configure do |config|
   # Helpers
   config.include InfinumJsonApiSetup::Rspec::Helpers::RequestHelper, type: :request
   config.include InfinumJsonApiSetup::Rspec::Helpers::ResponseHelper, type: :request
+
+  # Schema paths
+  config.schema_response_root = Rails.application.root.join('path/to/response_schemas')
+  config.schema_request_root = Rails.application.root.join('path/to/request_schemas')
 end
 
 ```
