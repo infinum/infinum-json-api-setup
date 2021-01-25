@@ -54,8 +54,8 @@ module InfinumJsonApiSetup
         link_params = params.deep_dup
         link_params[:page] = {
           number: page,
-          size: pagination_details.vars[:items],
-          padding: pagination_details.vars[:outset]
+          size: pagination_details.vars.fetch(:items),
+          padding: pagination_details.vars.fetch(:outset)
         }.compact
 
         Rails.application.routes.url_helpers.url_for(link_params)
