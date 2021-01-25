@@ -31,6 +31,7 @@ module InfinumJsonApiSetup
           total_pages: pagination_details.pages,
           total_count: pagination_details.count,
           padding: pagination_details.vars.fetch(:outset).to_i,
+          page_size: pagination_details.vars.fetch(:items).to_i,
           max_page_size: Pagy::VARS[:max_items]
         }
       end
@@ -53,7 +54,7 @@ module InfinumJsonApiSetup
         link_params = params.deep_dup
         link_params[:page] = {
           number: page,
-          size: pagination_details.items,
+          size: pagination_details.vars[:items],
           padding: pagination_details.vars[:outset]
         }.compact
 
