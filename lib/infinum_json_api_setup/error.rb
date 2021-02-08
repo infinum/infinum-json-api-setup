@@ -31,9 +31,7 @@ module InfinumJsonApiSetup
       def details_from_object(object)
         return unless object_supported?(object)
 
-        object.errors.map do |attribute, message|
-          [attribute, object.errors.full_message(attribute, message)]
-        end
+        object.errors.map { |error| [error.attribute, error.full_message] }
       end
 
       def object_supported?(object)
