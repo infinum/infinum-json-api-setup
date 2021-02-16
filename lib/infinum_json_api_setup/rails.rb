@@ -15,7 +15,7 @@ ActiveSupport.on_load(:action_controller) do
       end
 
       serializer = opts.delete(:serializer) do
-        "Api::V1::#{controller_name.classify.pluralize}::Serializer".constantize
+        "#{controller_path.classify.pluralize}::Serializer".constantize
       end
       options = InfinumJsonApiSetup::JsonApi::SerializerOptions.new(
         params: params.to_unsafe_h, pagination_details: opts[:pagination_details]
