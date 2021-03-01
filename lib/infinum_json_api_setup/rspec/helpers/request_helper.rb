@@ -32,7 +32,9 @@ module InfinumJsonApiSetup
         end
 
         def _included_params(resources)
-          resources.reject { |resource| resource[:attributes].blank? }
+          resources.reject do |resource|
+            resource[:attributes].blank? && resource[:relationships].blank?
+          end
         end
 
         def _relationships_params(relationships)
