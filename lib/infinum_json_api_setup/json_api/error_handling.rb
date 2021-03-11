@@ -3,7 +3,7 @@ module InfinumJsonApiSetup
     module ErrorHandling
       extend ActiveSupport::Concern
 
-      included do
+      included do # rubocop:disable Metrics/BlockLength
         rescue_from ActionController::ParameterMissing do |e|
           render_error(InfinumJsonApiSetup::Error::BadRequest.new(message: e.to_s))
         end
@@ -32,6 +32,10 @@ module InfinumJsonApiSetup
         end
 
         rescue_from I18n::InvalidLocale do |e|
+          render_error(InfinumJsonApiSetup::Error::BadRequest.new(message: e.to_s))
+        end
+
+        rescue_from ActionDispatch::Http::Parameters::ParseError do |e|
           render_error(InfinumJsonApiSetup::Error::BadRequest.new(message: e.to_s))
         end
       end
