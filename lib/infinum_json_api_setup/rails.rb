@@ -13,6 +13,7 @@ ActiveSupport.on_load(:action_controller) do
       if resources.is_a?(InfinumJsonApiSetup::Error::Base)
         break InfinumJsonApiSetup::JsonApi::ErrorSerializer.new(resources).serialized_json
       end
+      break if opts[:status] == 204
 
       serializer = opts.delete(:serializer) do
         "#{controller_path.classify.pluralize}::Serializer".constantize
