@@ -48,6 +48,7 @@ module InfinumJsonApiSetup
             data: case relationship
                   when Array then relationship.map { |rel| rel.slice(:id, :type) }
                   when Hash then relationship.slice(:id, :type)
+                  when NilClass then nil
                   else raise ArgumentError 'relationship must be either an array or hash'
                   end
           }
