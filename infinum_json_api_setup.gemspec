@@ -10,12 +10,12 @@ Gem::Specification.new do |s|
   s.files       = `git ls-files`.split("\n")
   s.homepage    = 'https://github.com/infinum/infinum-json-api-setup'
   s.license     = 'MIT'
-  s.required_ruby_version = '~> 2.7' # NOTE: randomly selected
+  s.required_ruby_version = '> 2.7' # NOTE: randomly selected
 
   s.add_runtime_dependency 'jsonapi_parameters' # TODO: define version
+  s.add_runtime_dependency 'pagy'               # TODO: define version
   s.add_runtime_dependency 'rails'              # TODO: define version
   s.add_runtime_dependency 'responders'         # TODO: define version
-  s.add_runtime_dependency 'pagy'               # TODO: define version
 
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rubocop', '~> 1.0'
