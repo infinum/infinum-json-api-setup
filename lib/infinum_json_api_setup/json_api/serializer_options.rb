@@ -3,10 +3,10 @@ module InfinumJsonApiSetup
     class SerializerOptions
       # @param [Hash] opts
       # @option opts [Hash] :params
-      # @option opts [Object] :pagination_details
-      def initialize(params:, pagination_details:)
+      # @option opts [Object] :serializer_options
+      def initialize(params:, serializer_options:)
         @params = params
-        @pagination_details = pagination_details
+        @serializer_options = serializer_options
       end
 
       # @return [Hash]
@@ -21,44 +21,14 @@ module InfinumJsonApiSetup
 
       private
 
-      attr_reader :params, :pagination_details
+      attr_reader :params, :serializer_options
 
       def meta
-        return {} unless pagination_details
-
-        {
-          current_page: pagination_details.page,
-          total_pages: pagination_details.pages,
-          total_count: pagination_details.count,
-          padding: pagination_details.vars.fetch(:outset).to_i,
-          page_size: pagination_details.vars.fetch(:items).to_i,
-          max_page_size: Pagy::VARS[:max_items]
-        }
+        serializer_options[:meta]
       end
 
       def links
-        return {} unless pagination_details
-
-        {
-          self: build_link(pagination_details.page),
-          first: build_link(1),
-          last: build_link(pagination_details.last),
-          prev: build_link(pagination_details.prev),
-          next: build_link(pagination_details.next)
-        }.compact
-      end
-
-      def build_link(page)
-        return unless page
-
-        link_params = params.deep_dup
-        link_params[:page] = {
-          number: page,
-          size: pagination_details.vars.fetch(:items),
-          padding: pagination_details.vars.fetch(:outset)
-        }.compact
-
-        Rails.application.routes.url_helpers.url_for(link_params)
+        serializer_options[:links]
       end
 
       def fields

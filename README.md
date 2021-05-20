@@ -26,6 +26,20 @@ module Api
 end
 ```
 
+# Usage
+
+```
+module Api
+  class UsersController < BaseController
+    def index
+      query = Users::Query.new(User.all, params.to_unsafe_h)
+
+      respond_with query.results, serializer_options: query.serializer_options
+    end
+  end
+end
+```
+
 # RSpec configuration
 
 spec/support/infinum_json_api_setup.rb
