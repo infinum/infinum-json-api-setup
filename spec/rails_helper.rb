@@ -1,5 +1,6 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../spec/dummy/config/environment', __dir__)
 require 'rspec/rails'
 
 # Add additional requires below this line. Rails is not loaded until this point!

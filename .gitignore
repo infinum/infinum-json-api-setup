@@ -1,1 +1,4 @@
 /spec/examples.txt
+/spec/dummy/log/*.log
+/test/dummy/storage/
+/spec/dummy/tmp/
