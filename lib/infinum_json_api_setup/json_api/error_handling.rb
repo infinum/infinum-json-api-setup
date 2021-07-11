@@ -5,7 +5,8 @@ module InfinumJsonApiSetup
 
       included do # rubocop:disable Metrics/BlockLength
         rescue_from ActionController::ParameterMissing do |e|
-          render_error(InfinumJsonApiSetup::Error::BadRequest.new(message: e.to_s))
+          message = e.to_s.split("\n").first
+          render_error(InfinumJsonApiSetup::Error::BadRequest.new(message: message))
         end
 
         rescue_from ActiveRecord::RecordNotFound do
