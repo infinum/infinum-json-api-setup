@@ -88,6 +88,9 @@ GEM
       hana (~> 1.3)
       regexp_parser (~> 2.0)
       uri_template (~> 0.7)
+    jsonapi-query_builder (0.1.9)
+      activerecord (>= 5)
+      pagy (~> 3.5)
     jsonapi_parameters (2.3.0)
       actionpack (>= 4.1.8)
       activesupport (>= 4.1.8)
@@ -198,6 +201,7 @@ PLATFORMS
 
 DEPENDENCIES
   infinum_json_api_setup!
+  jsonapi-query_builder
   pg
   rake
   rspec-rails (~> 5.0)
