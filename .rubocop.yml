@@ -1,11 +1,21 @@
-Layout/LineLength:
-  Max: 100
+inherit_gem:
+  rubocop-infinum: .rubocop.yml
 
-Style/Documentation:
-  Enabled: false
+require: rubocop-infinum
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/MultipleExpectations:
+  Max: 5
 
 AllCops:
-  SuggestExtensions: false
+  TargetRubyVersion: 2.7
+  Exclude:
+    - 'spec/dummy/db/schema.rb'
+    - 'spec/dummy/db/migrate/*.rb'
+  NewCops: enable
