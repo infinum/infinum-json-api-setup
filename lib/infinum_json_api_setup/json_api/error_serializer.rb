@@ -20,7 +20,8 @@ module InfinumJsonApiSetup
       # @param [Hash]
       def serializable_hash
         {}.tap do |hash|
-          hash[:errors] = error.details.is_a?(Array) ? serialize_error_array : serialize_error_message
+          hash[:errors] =
+            error.details.is_a?(Array) ? serialize_error_array : serialize_error_message
         end
       end
 

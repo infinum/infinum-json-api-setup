@@ -44,8 +44,8 @@ describe 'Error handling', type: :request do
   end
 
   context 'when action processing causes PG::Error' do
-    let(:location_model) { double('Location') }
-    let(:bugsnag) { double('Bugsnag', notify: nil) }
+    let(:location_model) { class_double('Location') }
+    let(:bugsnag) { class_double('Bugsnag', notify: nil) }
 
     before do
       stub_const('Bugsnag', bugsnag)

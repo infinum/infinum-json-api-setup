@@ -3,7 +3,7 @@ module Api
     class LocationsController < BaseController
       include Pundit
 
-      before_action :set_locale
+      around_action :with_locale
 
       # GET /api/v1/locations
       def index
@@ -28,8 +28,8 @@ module Api
 
       private
 
-      def set_locale
-        I18n.locale = params.fetch(:locale, :en)
+      def with_locale(&block)
+        I18n.with_locale(params.fetch(:locale, :en), &block)
       end
 
       def permitted_params
