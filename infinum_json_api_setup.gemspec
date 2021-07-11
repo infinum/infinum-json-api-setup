@@ -19,5 +19,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'responders'         # TODO: define version
 
   s.add_development_dependency 'rake'
+  s.add_development_dependency 'rspec-rails', '~> 5.0'
   s.add_development_dependency 'rubocop', '~> 1.0'
 end
