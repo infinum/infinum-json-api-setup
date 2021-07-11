@@ -74,4 +74,7 @@ RSpec.configure do |config|
   config.define_derived_metadata do |meta|
     meta[:aggregate_failures] = true
   end
+
+  config.include TestHelpers::Request, type: :request
+  config.include TestHelpers::Response, type: :request
 end
