@@ -22,6 +22,7 @@ module Api
     include InfinumJsonApiSetup::JsonApi::ContentNegotiation
 
     self.responder = InfinumJsonApiSetup::JsonApi::Responder
+    respond_to :json_api
   end
 end
 ```
@@ -42,5 +43,4 @@ RSpec.configure do |config|
   config.schema_response_root = Rails.application.root.join('path/to/response_schemas')
   config.schema_request_root = Rails.application.root.join('path/to/request_schemas')
 end
-
 ```
