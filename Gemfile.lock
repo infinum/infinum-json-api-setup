@@ -121,6 +121,8 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
+    pundit (2.1.0)
+      activesupport (>= 3.0.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -213,6 +215,7 @@ DEPENDENCIES
   jsonapi-serializer
   pg
   pry-rails
+  pundit
   rake
   rspec-rails (~> 5.0)
   rubocop (~> 1.0)
