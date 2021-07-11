@@ -3,6 +3,10 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../spec/dummy/config/environment', __dir__)
 require 'rspec/rails'
 
+Dir.chdir File.expand_path('dummy', __dir__) do
+  system 'bundle exec rails generate infinum_json_api_setup:install -f -q'
+end
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
