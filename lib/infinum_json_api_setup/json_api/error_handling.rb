@@ -15,8 +15,7 @@ module InfinumJsonApiSetup
 
         if defined?(Pundit)
           rescue_from Pundit::NotAuthorizedError do
-            message = 'You are not allowed to perform this action'
-            render_error(InfinumJsonApiSetup::Error::Forbidden.new(message: message))
+            render_error(InfinumJsonApiSetup::Error::Forbidden.new)
           end
         end
 
