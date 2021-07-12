@@ -72,6 +72,7 @@ GEM
       zeitwerk (~> 2.3)
     ast (2.4.2)
     builder (3.2.4)
+    coderay (1.1.3)
     concurrent-ruby (1.1.8)
     crass (1.0.6)
     diff-lcs (1.4.4)
@@ -88,6 +89,11 @@ GEM
       hana (~> 1.3)
       regexp_parser (~> 2.0)
       uri_template (~> 0.7)
+    jsonapi-query_builder (0.1.9)
+      activerecord (>= 5)
+      pagy (~> 3.5)
+    jsonapi-serializer (2.2.0)
+      activesupport (>= 4.2)
     jsonapi_parameters (2.3.0)
       actionpack (>= 4.1.8)
       activesupport (>= 4.1.8)
@@ -110,6 +116,13 @@ GEM
     parser (3.0.0.0)
       ast (~> 2.4.1)
     pg (1.2.3)
+    pry (0.14.1)
+      coderay (~> 1.1)
+      method_source (~> 1.0)
+    pry-rails (0.3.9)
+      pry (>= 0.10.4)
+    pundit (2.1.0)
+      activesupport (>= 3.0.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -198,7 +211,11 @@ PLATFORMS
 
 DEPENDENCIES
   infinum_json_api_setup!
+  jsonapi-query_builder
+  jsonapi-serializer
   pg
+  pry-rails
+  pundit
   rake
   rspec-rails (~> 5.0)
   rubocop (~> 1.0)

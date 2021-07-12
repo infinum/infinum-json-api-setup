@@ -9,7 +9,7 @@ en:
         detail: Resource not found
       forbidden:
         title: Forbidden
-        detail: User is not authorized to use this resource
+        detail: You are not allowed to perform this action
       unauthorized:
         title: Unauthorized
         detail: Must be logged in to perform this action
