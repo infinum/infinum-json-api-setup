@@ -49,13 +49,13 @@ module InfinumJsonApiSetup
 
     class UnprocessableEntity < Base; end
 
+    class InternalServerError < Base; end
+
     class RecordNotFound < Base
       # @return [Symbol]
       def http_status
         :not_found
       end
     end
-
-    class InternalServerError < Base; end
   end
 end
