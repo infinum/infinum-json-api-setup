@@ -18,10 +18,12 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'rails'              # TODO: define version
   s.add_runtime_dependency 'responders'         # TODO: define version
 
+  s.add_development_dependency 'jsonapi-query_builder'
+  s.add_development_dependency 'jsonapi-serializer'
   s.add_development_dependency 'pg'
+  s.add_development_dependency 'pry-rails'
+  s.add_development_dependency 'pundit'
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rspec-rails', '~> 5.0'
   s.add_development_dependency 'rubocop', '~> 1.0'
-  s.add_development_dependency 'jsonapi-query_builder'
-  s.add_development_dependency 'jsonapi-serializer'
 end
