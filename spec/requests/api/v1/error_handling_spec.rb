@@ -33,6 +33,18 @@ describe 'Error handling', type: :request do
   end
 
   context 'when request contains unpermitted sort params' do
+    let(:bugsnag) { double('Bugsnag', notify: nil) }
+
+    before do
+      stub_const('Bugsnag', bugsnag)
+    end
+
+    it 'notifies Bugsnag about the incident' do
+      get '/api/v1/locations?sort=-title', headers: default_headers
+
+      expect(bugsnag).to have_received(:notify)
+    end
+
     it 'responds with 400 BadRequest' do
       get '/api/v1/locations?sort=-title', headers: default_headers
 
