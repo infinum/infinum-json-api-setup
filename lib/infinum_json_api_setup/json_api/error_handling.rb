@@ -5,7 +5,8 @@ module InfinumJsonApiSetup
 
       included do # rubocop:disable Metrics/BlockLength
         rescue_from ActionController::ParameterMissing do |e|
-          render_error(InfinumJsonApiSetup::Error::BadRequest.new(message: e.to_s))
+          message = e.to_s.split("\n").first
+          render_error(InfinumJsonApiSetup::Error::BadRequest.new(message: message))
         end
 
         rescue_from ActiveRecord::RecordNotFound do
@@ -14,13 +15,13 @@ module InfinumJsonApiSetup
 
         if defined?(Pundit)
           rescue_from Pundit::NotAuthorizedError do
-            message = 'You are not allowed to perform this action'
-            render_error(InfinumJsonApiSetup::Error::Forbidden.new(message: message))
+            render_error(InfinumJsonApiSetup::Error::Forbidden.new)
           end
         end
 
         if defined?(Jsonapi::QueryBuilder)
           rescue_from Jsonapi::QueryBuilder::Mixins::Sort::UnpermittedSortParameters do |e|
+            Bugsnag.notify(e)
             render_error(InfinumJsonApiSetup::Error::BadRequest.new(message: e.to_s))
           end
         end

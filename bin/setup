@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require 'pathname'
+
+DUMMY_APP_ROOT = Pathname.new File.expand_path('../spec/dummy', __dir__)
+
+Dir.chdir DUMMY_APP_ROOT do
+  system 'bin/setup'
+end

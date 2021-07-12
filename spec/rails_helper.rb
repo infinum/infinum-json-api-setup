@@ -1,8 +1,16 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../spec/dummy/config/environment', __dir__)
 require 'rspec/rails'
 
+Dir.chdir File.expand_path('dummy', __dir__) do
+  system 'bundle exec rails generate infinum_json_api_setup:install -f -q'
+end
+
 # Add additional requires below this line. Rails is not loaded until this point!
+require 'jsonapi/query_builder'
+require 'jsonapi/serializer'
+require 'pundit'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -66,4 +74,7 @@ RSpec.configure do |config|
   config.define_derived_metadata do |meta|
     meta[:aggregate_failures] = true
   end
+
+  config.include TestHelpers::Request, type: :request
+  config.include TestHelpers::Response, type: :request
 end
