@@ -1,7 +1,9 @@
 inherit_gem:
   rubocop-infinum: .rubocop.yml
 
-require: rubocop-infinum
+require:
+  - rubocop-infinum
+  - rubocop-rake
 
 Metrics/BlockLength:
   Exclude:
