@@ -1,4 +1,8 @@
 class Location < ApplicationRecord
+  MIN_LATITUDE = -90
+  MAX_LATITUDE = 90
+  MIN_LONGITUDE = -180
+  MAX_LONGITUDE = 180
   FIRST_QUADRANT = :first
   SECOND_QUADRANT = :second
   THIRD_QUADRANT = :third
@@ -6,6 +10,11 @@ class Location < ApplicationRecord
   ORIGIN = :origin
   X_AXIS = :x_axis
   Y_AXIS = :y_axis
+
+  validates :latitude, numericality: { greater_than_or_equal_to: MIN_LATITUDE,
+                                       less_than_or_equal_to: MAX_LATITUDE }
+  validates :longitude, numericality: { greater_than_or_equal_to: MIN_LONGITUDE,
+                                        less_than_or_equal_to: MAX_LONGITUDE }
 
   # @return [Integer]
   def quadrant # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
