@@ -25,8 +25,8 @@ describe 'Serializer options', type: :request do
     get "/api/v1/locations?#{q.to_query}", params: {}, headers: default_headers
 
     expect(response).to have_http_status(:ok)
-    self_link = json_response.dig('links', 'self')
-    expect(parse_query(self_link)).to have_key('fields[locations]')
+    expect(query_params(json_response.dig('links', 'self')))
+      .to include('fields[locations]' => ['latitude'])
   end
 
   it 'adds client requested include information to links' do
@@ -34,13 +34,13 @@ describe 'Serializer options', type: :request do
     get "/api/v1/locations?#{q.to_query}", params: {}, headers: default_headers
 
     expect(response).to have_http_status(:ok)
-    self_link = json_response.dig('links', 'self')
-    expect(parse_query(self_link)).to have_key('include')
+    expect(query_params(json_response.dig('links', 'self')))
+      .to include('include' => ['labels'])
   end
 
   private
 
-  def parse_query(link)
+  def query_params(link)
     CGI.parse(URI(link).query)
   end
 end
