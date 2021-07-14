@@ -33,7 +33,7 @@ describe 'Error handling', type: :request do
   end
 
   context 'when request contains unpermitted sort params' do
-    let(:bugsnag) { double('Bugsnag', notify: nil) }
+    let(:bugsnag) { class_double('Bugsnag', notify: nil) }
 
     before do
       stub_const('Bugsnag', bugsnag)
