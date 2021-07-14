@@ -10,6 +10,20 @@ describe 'Error handling', type: :request do
     end
   end
 
+  context 'when request contains semantical errors' do
+    it 'responds with 422 UnprocessableEntity and error details' do
+      params = { latitude: 999, longitude: 999 }
+
+      post '/api/v1/locations', params: { location: params }.to_json, headers: default_headers
+
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(json_response['errors'].map { |details| details['source'] }).to contain_exactly(
+        { 'parameter' => 'latitude', 'pointer' => 'data/attributes/latitude' },
+        { 'parameter' => 'longitude', 'pointer' => 'data/attributes/longitude' }
+      )
+    end
+  end
+
   context "when ActiveRecord can't find requested record" do
     it 'responds with 404 NotFound' do
       get '/api/v1/locations/0', headers: default_headers
