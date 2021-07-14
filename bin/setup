@@ -1,7 +1,17 @@
 #!/usr/bin/env ruby
 require 'pathname'
 
+GEM_ROOT = Pathname.new File.expand_path('..', __dir__)
 DUMMY_APP_ROOT = Pathname.new File.expand_path('../spec/dummy', __dir__)
+
+Dir.chdir GEM_ROOT do
+  puts '== Installing dependencies =='
+  system 'gem install bundler --conservative'
+  system 'bundle check || bundle install'
+
+  puts '== Installing overcommit =='
+  system 'overcommit --install'
+end
 
 Dir.chdir DUMMY_APP_ROOT do
   system 'bin/setup'
