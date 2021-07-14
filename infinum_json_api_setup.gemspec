@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '> 2.7' # NOTE: randomly selected
 
   s.add_runtime_dependency 'jsonapi_parameters' # TODO: define version
-  s.add_runtime_dependency 'json_schemer', '~> 0.2.18'
+  s.add_runtime_dependency 'json_schemer', '~> 0.2'
   s.add_runtime_dependency 'pagy'               # TODO: define version
   s.add_runtime_dependency 'rails'              # TODO: define version
   s.add_runtime_dependency 'responders'         # TODO: define version
