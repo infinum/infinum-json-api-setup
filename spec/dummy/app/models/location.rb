@@ -7,6 +7,8 @@ class Location < ApplicationRecord
   X_AXIS = :x_axis
   Y_AXIS = :y_axis
 
+  has_many :labels, class_name: 'LocationLabel'
+
   # @return [Integer]
   def quadrant # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
     if latitude.positive? && longitude.positive?
