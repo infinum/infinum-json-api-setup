@@ -2,18 +2,14 @@ require 'cgi'
 require 'uri'
 
 describe 'Serializer options', type: :request do
-  it 'adds meta with pagination information' do # rubocop:disable RSpec/MultipleExpectations
+  it 'adds meta with pagination information' do
     get '/api/v1/locations', params: {}, headers: default_headers
 
     expect(response).to have_http_status(:ok)
     expect(json_response).to have_key('meta')
-    meta = json_response['meta']
-    expect(meta).to have_key('current_page')
-    expect(meta).to have_key('total_pages')
-    expect(meta).to have_key('total_count')
-    expect(meta).to have_key('padding')
-    expect(meta).to have_key('page_size')
-    expect(meta).to have_key('max_page_size')
+    expect(json_response['meta'].keys).to include(
+      'current_page', 'total_pages', 'total_count', 'padding', 'page_size', 'max_page_size'
+    )
   end
 
   it 'adds links' do
@@ -21,10 +17,7 @@ describe 'Serializer options', type: :request do
 
     expect(response).to have_http_status(:ok)
     expect(json_response).to have_key('links')
-    links = json_response['links']
-    expect(links).to have_key('self')
-    expect(links).to have_key('first')
-    expect(links).to have_key('last')
+    expect(json_response['links'].keys).to include('self', 'first', 'last')
   end
 
   it 'adds client requested fields information to links' do
