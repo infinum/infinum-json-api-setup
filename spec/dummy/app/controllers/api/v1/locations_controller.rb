@@ -9,7 +9,7 @@ module Api
       def index
         q = Api::V1::Locations::Query.new(Location.all, params.to_unsafe_hash)
 
-        respond_with q.results
+        respond_with q.results, pagination_details: q.pagination_details
       end
 
       # GET /api/v1/locations

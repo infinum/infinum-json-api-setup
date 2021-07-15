@@ -1,12 +1,10 @@
 module Api
   module V1
     module Locations
-      class Serializer
+      class LabelSerializer
         include JSONAPI::Serializer
 
-        has_many :labels, serializer: LabelSerializer
-        attribute :latitude
-        attribute :longitude
+        attribute :title
         attribute :created_at
         attribute :updated_at
       end

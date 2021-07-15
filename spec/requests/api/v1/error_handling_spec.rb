@@ -22,7 +22,7 @@ describe 'Error handling', type: :request do
 
   context 'when client is not authorized to perform requested action' do
     it 'responds with 403 Forbidden' do
-      loc = Location.create(latitude: -1, longitude: -1)
+      loc = create(:location, :fourth_quadrant)
       get "/api/v1/locations/#{loc.id}", headers: default_headers
 
       expect(response).to have_http_status(:forbidden)
