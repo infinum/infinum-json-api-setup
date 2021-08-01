@@ -26,6 +26,22 @@ module Api
         respond_with location
       end
 
+      # PUT/PATCH /api/v1/locations/:id
+      def update
+        location = authorize(Location.find(params[:id]))
+        location.update(permitted_params)
+
+        respond_with location
+      end
+
+      # DELETE /api/v1/locations/:id
+      def destroy
+        location = authorize(Location.find(params[:id]))
+        location.destroy
+
+        respond_with location
+      end
+
       private
 
       def with_locale(&block)
