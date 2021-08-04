@@ -72,11 +72,6 @@ RSpec.configure do |config|
   # Enables running rspec --only-failures
   config.example_status_persistence_file_path = 'spec/examples.txt'
 
-  # Aggregate test failures
-  config.define_derived_metadata do |meta|
-    meta[:aggregate_failures] = true
-  end
-
   config.include TestHelpers::Request, type: :request
   config.include TestHelpers::Response, type: :request
 end
