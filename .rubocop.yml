@@ -15,6 +15,9 @@ RSpec/ExampleLength:
 RSpec/MultipleExpectations:
   Max: 5
 
+Style/AccessorGrouping:
+  EnforcedStyle: separated
+
 AllCops:
   TargetRubyVersion: 2.7
   Exclude:
