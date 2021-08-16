@@ -16,7 +16,7 @@ module Api
       def create
         location = Location.create(permitted_params)
 
-        respond_wih location
+        respond_with location
       end
 
       # GET /api/v1/locations/:id
