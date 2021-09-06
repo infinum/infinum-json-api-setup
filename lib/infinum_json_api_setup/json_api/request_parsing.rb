@@ -2,11 +2,11 @@ module InfinumJsonApiSetup
   module JsonApi
     module RequestParsing
       def relationship_children_ids(type)
-        data_params.map do |p|
+        data_params.filter_map do |p|
           next if p[:type] != type
 
           p[:id].to_i
-        end.compact.uniq
+        end.uniq
       end
 
       def data_params

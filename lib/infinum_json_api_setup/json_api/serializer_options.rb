@@ -21,7 +21,8 @@ module InfinumJsonApiSetup
 
       private
 
-      attr_reader :params, :pagination_details
+      attr_reader :params
+      attr_reader :pagination_details
 
       def meta
         return {} unless pagination_details

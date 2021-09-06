@@ -1,5 +1,5 @@
 inherit_gem:
-  rubocop-infinum: .rubocop.yml
+  rubocop-infinum: rubocop.yml
 
 require:
   - rubocop-infinum
@@ -17,6 +17,9 @@ RSpec/MultipleExpectations:
 
 Style/AccessorGrouping:
   EnforcedStyle: separated
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
 AllCops:
   TargetRubyVersion: 2.7
