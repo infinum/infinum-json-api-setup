@@ -42,8 +42,12 @@ module InfinumJsonApiSetup
           @actual_ids ||= JSON
                           .parse(response.body)
                           .fetch('data')
-                          .map { |resource| resource['id'].to_i }
+                          .map { |resource| process_id(resource['id']) }
                           .sort
+        end
+
+        def process_id(value)
+          value.to_i
         end
       end
     end
