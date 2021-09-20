@@ -2,6 +2,7 @@ require 'infinum_json_api_setup/rspec/matchers/schema_matchers'
 require 'infinum_json_api_setup/rspec/matchers/body_matchers'
 require 'infinum_json_api_setup/rspec/matchers/include_all_resource_ids'
 require 'infinum_json_api_setup/rspec/matchers/include_all_resource_string_ids'
+require 'infinum_json_api_setup/rspec/matchers/include_all_resource_ids_sorted'
 
 require 'infinum_json_api_setup/rspec/helpers/request_helper'
 require 'infinum_json_api_setup/rspec/helpers/response_helper'

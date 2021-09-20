@@ -7,7 +7,7 @@ module InfinumJsonApiSetup
       end
 
       class IncludeAllResourceStringIds < IncludeAllResourceIds
-        def process_id(id)
+        def process_actual_id(id)
           id
         end
       end
