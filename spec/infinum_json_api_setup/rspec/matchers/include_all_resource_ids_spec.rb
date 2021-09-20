@@ -1,4 +1,6 @@
 describe InfinumJsonApiSetup::RSpec::Matchers::IncludeAllResourceIds do
+  include TestHelpers::Matchers::Response
+
   describe 'usage' do
     context "when ID's match" do
       it 'matches' do
@@ -43,13 +45,5 @@ describe InfinumJsonApiSetup::RSpec::Matchers::IncludeAllResourceIds do
         end.to fail_with('Failed to extract data from response body')
       end
     end
-  end
-
-  def response_with_ids(ids)
-    response_with_body(JSON.dump(data: ids.map { |id| { 'id' => id } }))
-  end
-
-  def response_with_body(body)
-    ActionDispatch::TestResponse.new(200, {}, body)
   end
 end
