@@ -7,13 +7,6 @@ RSpec::Matchers.define :include_related_resource do |type, id|
   end
 end
 
-RSpec::Matchers.define :have_empty_data do
-  match do |response|
-    body = JSON.parse(response.body)
-    body['data'].empty?
-  end
-end
-
 RSpec::Matchers.define :have_resource_count_of do |count|
   match do |response|
     body = JSON.parse(response.body)
