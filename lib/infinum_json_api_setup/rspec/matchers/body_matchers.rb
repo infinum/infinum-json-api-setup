@@ -1,11 +1,3 @@
-RSpec::Matchers.define :include_all_resource_ids_sorted do |params|
-  match do |response|
-    body = JSON.parse(response.body)
-    resource_ids = body['data'].map { |resource| resource['id'].to_i }
-    resource_ids == params
-  end
-end
-
 RSpec::Matchers.define :include_related_resource do |type, id|
   match do |response|
     body = JSON.parse(response.body)

@@ -11,7 +11,7 @@ module InfinumJsonApiSetup
       class IncludeAllResourceIds
         # @param [Array<Integer>] required_ids
         def initialize(required_ids)
-          @required_ids = required_ids.sort
+          @required_ids = process_required_ids(required_ids)
         end
 
         # @param [ActionDispatch::TestResponse] response
@@ -19,7 +19,7 @@ module InfinumJsonApiSetup
         def matches?(response)
           @response = response
 
-          actual_ids == required_ids.sort
+          actual_ids == required_ids
         rescue JSON::ParserError => _e
           @error_message = 'Failed to parse response body'
           false
@@ -38,16 +38,25 @@ module InfinumJsonApiSetup
         attr_reader :response
         attr_reader :required_ids
 
-        def actual_ids
-          @actual_ids ||= JSON
-                          .parse(response.body)
-                          .fetch('data')
-                          .map { |resource| process_id(resource['id']) }
-                          .sort
+        def process_required_ids(ids)
+          ids.sort
         end
 
-        def process_id(value)
+        def actual_ids
+          @actual_ids ||= process_actual_ids(
+            JSON
+            .parse(response.body)
+            .fetch('data')
+            .map { |resource| process_actual_id(resource['id']) }
+          )
+        end
+
+        def process_actual_id(value)
           value.to_i
+        end
+
+        def process_actual_ids(ids)
+          ids.sort
         end
       end
     end
