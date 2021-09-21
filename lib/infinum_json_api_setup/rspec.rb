@@ -5,6 +5,7 @@ require 'infinum_json_api_setup/rspec/matchers/include_all_resource_ids'
 require 'infinum_json_api_setup/rspec/matchers/include_all_resource_string_ids'
 require 'infinum_json_api_setup/rspec/matchers/include_all_resource_ids_sorted'
 require 'infinum_json_api_setup/rspec/matchers/have_empty_data'
+require 'infinum_json_api_setup/rspec/matchers/have_resource_count_of'
 
 require 'infinum_json_api_setup/rspec/helpers/request_helper'
 require 'infinum_json_api_setup/rspec/helpers/response_helper'
