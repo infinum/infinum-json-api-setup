@@ -6,17 +6,25 @@ module InfinumJsonApiSetup
         HaveEmptyData.new
       end
 
-      class HaveEmptyData
-        include MatchJsonData
+      class HaveEmptyData < JsonBodyMatcher
+        def initialize
+          super(Matchers::Util::BodyParser.new('data'))
+        end
 
         private
 
-        def do_matches?
+        attr_reader :data
+
+        def body_matches?
           data.empty?
         end
 
         def match_failure_message
           "Expected response data(#{data}) to be empty, but isn't"
+        end
+
+        def process_parsing_result(data)
+          @data = data
         end
       end
     end
