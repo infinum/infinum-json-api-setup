@@ -7,13 +7,6 @@ RSpec::Matchers.define :include_related_resource do |type, id|
   end
 end
 
-RSpec::Matchers.define :have_resource_count_of do |count|
-  match do |response|
-    body = JSON.parse(response.body)
-    body['data'].count == count
-  end
-end
-
 RSpec::Matchers.define :include_error_text do |error_detail|
   match do |response|
     body = JSON.parse(response.body)
