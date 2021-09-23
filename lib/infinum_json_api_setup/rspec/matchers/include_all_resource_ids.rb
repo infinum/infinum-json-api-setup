@@ -1,41 +1,41 @@
-require 'json'
-
 module InfinumJsonApiSetup
   module RSpec
     module Matchers
+      # @param [Array<Integer>] required_ids
       # @return [InfinumJsonApiSetup::Rspec::Matchers::IncludeAllResourceIds]
-      def include_all_resource_ids(*args)
-        IncludeAllResourceIds.new(*args)
+      def include_all_resource_ids(required_ids)
+        IncludeAllResourceIds.new(required_ids)
       end
 
-      class IncludeAllResourceIds
-        include MatchJsonData
-
+      class IncludeAllResourceIds < JsonBodyMatcher
         # @param [Array<Integer>] required_ids
         def initialize(required_ids)
+          super(Matchers::Util::BodyParser.new('data'))
+
           @required_ids = process_required_ids(required_ids)
         end
 
         private
 
-        def do_matches?
+        attr_reader :actual_ids
+        attr_reader :required_ids
+
+        def body_matches?
           actual_ids == required_ids
         end
-
-        attr_reader :required_ids
 
         def match_failure_message
           "Expected response ID's(#{actual_ids}) to match #{required_ids}"
         end
 
-        def process_required_ids(ids)
-          ids.sort
+        def process_parsing_result(data)
+          @actual_ids = process_actual_ids(
+            data.map { |item| process_actual_id(item['id']) }
+          )
         end
 
-        def actual_ids
-          @actual_ids ||= process_actual_ids(
-            data.map { |resource| process_actual_id(resource['id']) }
-          )
+        def process_required_ids(ids)
+          ids.sort
         end
 
         def process_actual_id(value)

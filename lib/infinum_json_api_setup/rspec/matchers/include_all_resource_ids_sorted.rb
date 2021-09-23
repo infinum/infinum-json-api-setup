@@ -1,9 +1,10 @@
 module InfinumJsonApiSetup
   module RSpec
     module Matchers
+      # @param [Array<Integer>] required_ids
       # @return [InfinumJsonApiSetup::Rspec::Matchers::IncludeAllResourceIdsSorted]
-      def include_all_resource_ids_sorted(*args)
-        IncludeAllResourceIdsSorted.new(*args)
+      def include_all_resource_ids_sorted(required_ids)
+        IncludeAllResourceIdsSorted.new(required_ids)
       end
 
       class IncludeAllResourceIdsSorted < IncludeAllResourceIds
