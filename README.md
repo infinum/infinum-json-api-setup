@@ -44,21 +44,21 @@ end
 ```
 
 ### Responding
-Use `respond_with` to initiate transformation(serialization) of domain objects into HTTP response.
+Use `respond_with` to initiate transformation (serialization) of domain objects into HTTP response.
 ```ruby
 def show
   respond_with User.find(params[:id])
 end
 ```
 
-`respond_with` is well integrated with `ActiveRecord::Model` interface. Given a compliant object, the method will correctly set a response status and handle object(or error) serialization based on the presence of `.errors`. For a successful domain operation, HTTP status will be 200 OK(or 204 in case of `create` controller action). Unsuccessful operations will have HTTP status 422 Unprocessable Entity with errors structured according to [JSON:API specification](https://jsonapi.org/format/#error-objects).
+`respond_with` is well integrated with `ActiveRecord::Model` interface. Given a compliant object, the method will correctly set a response status and handle object(or error) serialization based on the presence of `.errors`. For a successful domain operation, HTTP status will be 200 OK (or 201 in case of `create` controller action). Unsuccessful operations will have HTTP status 422 Unprocessable Entity with errors structured according to [JSON:API specification](https://jsonapi.org/format/#error-objects).
 ```ruby
 def create
   respond_with User.create(permitted_params)
 end
 ```
 
-`respond_with` also detects usage from a `destroy` controller action and responds with HTTP status 200 OK and an empty body.
+`respond_with` also detects usage from a `destroy` controller action and responds with HTTP status 204 No Content and an empty body.
 ```ruby
 def destroy
   respond_with User.destroy(params[:id])
