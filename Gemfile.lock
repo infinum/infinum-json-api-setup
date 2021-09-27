@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    infinum_json_api_setup (0.0.3)
+    infinum_json_api_setup (0.0.4)
       json_schemer (~> 0.2)
       jsonapi_parameters
       pagy
