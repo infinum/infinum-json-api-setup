@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    infinum_json_api_setup (0.0.4)
+    infinum_json_api_setup (0.0.5)
       json_schemer (~> 0.2)
       jsonapi_parameters
       pagy
@@ -112,7 +112,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    marcel (1.0.1)
+    marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.1)
     mini_portile2 (2.6.1)
