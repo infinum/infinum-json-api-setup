@@ -20,7 +20,7 @@ module InfinumJsonApiSetup
         end
 
         if defined?(Jsonapi::QueryBuilder)
-          rescue_from Jsonapi::QueryBuilder::Mixins::Sort::UnpermittedSortParameters do |e|
+          rescue_from Jsonapi::QueryBuilder::Errors::UnpermittedSortParameters do |e|
             Bugsnag.notify(e)
             render_error(InfinumJsonApiSetup::Error::BadRequest.new(message: e.to_s))
           end
