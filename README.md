@@ -8,7 +8,7 @@ Preconfigured set of libraries for building JSON:API compliant endpoints, with m
 ## Installation
 1. Add Infinum JSON:API setup to your Gemfile
   ```ruby
-  gem 'infinum_json_api_setup', github: 'infinum/infinum-json-api-setup'
+  gem 'infinum_json_api_setup'
   ```
 
 2. Next, run the generator
