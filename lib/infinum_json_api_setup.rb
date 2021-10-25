@@ -1,8 +1,13 @@
-require 'jsonapi_parameters'
 require 'rails'
-require 'responders'
-require 'pagy'
+
+require 'json'
+require 'jsonapi_parameters'
+require 'jsonapi/serializer'
 require 'json_schemer'
+require 'responders'
+
+require 'pagy'
+require 'jsonapi/query_builder'
 
 require 'infinum_json_api_setup/error'
 require 'infinum_json_api_setup/json_api/error_handling'
