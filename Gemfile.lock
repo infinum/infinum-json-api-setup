@@ -3,6 +3,8 @@ PATH
   specs:
     infinum_json_api_setup (0.0.5)
       json_schemer (~> 0.2)
+      jsonapi-query_builder
+      jsonapi-serializer
       jsonapi_parameters
       pagy
       rails
@@ -251,8 +253,6 @@ DEPENDENCIES
   factory_bot (~> 6.2)
   faker (~> 2.18)
   infinum_json_api_setup!
-  jsonapi-query_builder
-  jsonapi-serializer
   overcommit (~> 0.58)
   pg
   pry-rails
