@@ -1,3 +1,8 @@
+## 0.0.8 (Oct 25th, 2021)
+- update and upgrade pagy
+
+[Compare v0.0.7...v0.0.8](https://github.com/infinum/infinum-json-api-setup/compare/v0.0.7...v0.0.8)
+
 ## 0.0.7 (Oct 25th, 2021)
 - fix runtime depenency loading
 
