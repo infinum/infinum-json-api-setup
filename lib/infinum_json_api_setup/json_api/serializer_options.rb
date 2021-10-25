@@ -33,7 +33,7 @@ module InfinumJsonApiSetup
           total_count: pagination_details.count,
           padding: pagination_details.vars.fetch(:outset).to_i,
           page_size: pagination_details.vars.fetch(:items).to_i,
-          max_page_size: Pagy::VARS[:max_items]
+          max_page_size: Pagy::DEFAULT[:max_items]
         }
       end
 
