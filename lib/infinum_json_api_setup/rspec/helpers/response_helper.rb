@@ -9,7 +9,7 @@ module InfinumJsonApiSetup
         def response_item
           raise 'json response is not an item' if json_response[:data].is_a?(Array)
 
-          OpenStruct.new(json_response[:data][:attributes])
+          OpenStruct.new(**json_response[:data].slice(:id, :type), **json_response[:data][:attributes])
         end
 
         def response_collection
