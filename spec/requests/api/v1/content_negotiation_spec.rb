@@ -1,4 +1,4 @@
-describe 'Content negotiation', type: :request do
+describe 'Content negotiation' do
   it 'passes through requests demanding JSON:API compliant response' do
     get '/api/v1/locations', headers: { accept: 'application/vnd.api+json' }
 

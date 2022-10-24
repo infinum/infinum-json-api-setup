@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'https://github.com/infinum/infinum-json-api-setup'
   s.license     = 'MIT'
   s.required_ruby_version = '> 2.7'
+  s.metadata = { 'rubygems_mfa_required' => 'true' }
 
   s.add_runtime_dependency 'jsonapi_parameters'
   s.add_runtime_dependency 'jsonapi-query_builder'

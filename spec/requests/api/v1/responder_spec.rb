@@ -1,4 +1,4 @@
-describe 'Responder', type: :request do
+describe 'Responder' do
   context 'when GET request' do
     it 'responds with 200 OK' do
       get '/api/v1/locations', headers: default_headers

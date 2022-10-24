@@ -1,7 +1,7 @@
 require 'cgi'
 require 'uri'
 
-describe 'Serializer options', type: :request do
+describe 'Serializer options' do
   it 'adds meta with pagination information' do
     get '/api/v1/locations', params: {}, headers: default_headers
 

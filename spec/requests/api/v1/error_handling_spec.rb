@@ -1,4 +1,4 @@
-describe 'Error handling', type: :request do
+describe 'Error handling' do
   context "when request doesn't contain required parameters" do
     it 'responds with 400 BadRequest' do
       post '/api/v1/locations', params: {}, headers: default_headers
@@ -17,7 +17,7 @@ describe 'Error handling', type: :request do
       post '/api/v1/locations', params: { location: params }.to_json, headers: default_headers
 
       expect(response).to have_http_status(:unprocessable_entity)
-      expect(json_response['errors'].map { |details| details['source'] }).to contain_exactly(
+      expect(json_response['errors'].pluck('source')).to contain_exactly(
         { 'parameter' => 'latitude', 'pointer' => 'data/attributes/latitude' },
         { 'parameter' => 'longitude', 'pointer' => 'data/attributes/longitude' }
       )
@@ -47,7 +47,7 @@ describe 'Error handling', type: :request do
   end
 
   context 'when request contains unpermitted sort params' do
-    let(:bugsnag) { class_double('Bugsnag', notify: nil) }
+    let(:bugsnag) { class_double('Bugsnag', notify: nil) } # rubocop:disable RSpec/VerifiedDoubleReference
 
     before do
       stub_const('Bugsnag', bugsnag)
@@ -70,8 +70,8 @@ describe 'Error handling', type: :request do
   end
 
   context 'when action processing causes PG::Error' do
-    let(:location_model) { class_double('Location') }
-    let(:bugsnag) { class_double('Bugsnag', notify: nil) }
+    let(:location_model) { class_double(Location) }
+    let(:bugsnag) { class_double('Bugsnag', notify: nil) } # rubocop:disable RSpec/VerifiedDoubleReference
 
     before do
       stub_const('Bugsnag', bugsnag)
