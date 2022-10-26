@@ -1,7 +1,7 @@
 module Api
   module V1
     class LocationsController < BaseController
-      include Pundit
+      include Pundit::Authorization
 
       around_action :with_locale
 

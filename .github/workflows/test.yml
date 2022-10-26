@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      database:
+        image: postgres:14
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - ruby: 2.7.2
+          gemfile: rails.6.1.gemfile
+        - ruby: 3.1.2
+          gemfile: rails.6.1.gemfile
+        - ruby: 3.1.2
+          gemfile: rails.7.0.gemfile
+    env:
+      BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: "${{ matrix.ruby }}"
+    - name: Install dependencies
+      run: bundle install
+    - name: Setup database
+      env:
+        BUNDLE_GEMFILE: "../../${{ matrix.gemfile }}"
+      run: |
+        cd spec/dummy
+        rake db:test:prepare
+    - name: Run rubocop
+      run: bundle exec rubocop
+    - name: Run specs
+      run: bundle exec rspec

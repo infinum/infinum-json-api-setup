@@ -20,12 +20,4 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'pagy'
   s.add_runtime_dependency 'rails'
   s.add_runtime_dependency 'responders'
-
-  s.add_development_dependency 'overcommit', '~> 0.58'
-  s.add_development_dependency 'pg'
-  s.add_development_dependency 'pry-rails'
-  s.add_development_dependency 'pundit'
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'rspec-rails', '~> 5.0'
-  s.add_development_dependency 'simplecov'
 end
