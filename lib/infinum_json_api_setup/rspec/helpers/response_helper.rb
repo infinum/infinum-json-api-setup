@@ -9,14 +9,14 @@ module InfinumJsonApiSetup
         def response_item
           raise 'json response is not an item' if json_response[:data].is_a?(Array)
 
-          OpenStruct.new(json_response[:data][:attributes])
+          OpenStruct.new(json_response[:data][:attributes]) # rubocop:disable Style/OpenStructUse
         end
 
         def response_collection
           raise 'json response is not a collection' unless json_response[:data].is_a?(Array)
 
           json_response[:data].map do |item|
-            OpenStruct.new(id: item[:id], type: item[:type], **item[:attributes])
+            OpenStruct.new(id: item[:id], type: item[:type], **item[:attributes]) # rubocop:disable Style/OpenStructUse
           end
         end
 
@@ -34,7 +34,7 @@ module InfinumJsonApiSetup
 
         def response_included
           json_response[:included].map do |item|
-            OpenStruct.new(id: item[:id], type: item[:type], **item[:attributes])
+            OpenStruct.new(id: item[:id], type: item[:type], **item[:attributes]) # rubocop:disable Style/OpenStructUse
           end
         end
 
