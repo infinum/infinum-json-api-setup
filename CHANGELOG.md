@@ -1,22 +1,41 @@
-## 0.0.8 (Oct 25th, 2021)
-- update and upgrade pagy
+# Change Log for infinum/infinum-json-api-setup
 
-[Compare v0.0.7...v0.0.8](https://github.com/infinum/infinum-json-api-setup/compare/v0.0.7...v0.0.8)
+All notable changes to this project will be documented in this file.
 
-## 0.0.7 (Oct 25th, 2021)
-- fix runtime depenency loading
+This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a CHANGELOG](https://keepachangelog.com/).
 
-[Compare v0.0.6...v0.0.7](https://github.com/infinum/infinum-json-api-setup/compare/v0.0.6...v0.0.7)
+## [Unreleased]
 
-## 0.0.6 (Oct 25th, 2021)
-- update installation instructions in README
-- promote jsonapi-query-builder and jsonapi-serializer to runtime dependencies
-- start CHANGELOG
+### Changes
+- Reformat CHANGELOG according to infinum/open-source-project-template
 
-[Compare v0.0.5...v0.0.6](https://github.com/infinum/infinum-json-api-setup/compare/v0.0.5...v0.0.6)
+## [0.0.8] - 2021-10-25
 
-## 0.0.5 (Oct 6th, 2021)
-- bump jsonapi-query_builder dependency
-- bump Nokogiri dependency (due to CVE)
+### Updated
+- Bump pagy dependency
 
-[Compare v0.0.4...v0.0.4](https://github.com/infinum/infinum-json-api-setup/compare/v0.0.4...v0.0.5)
+## [0.0.7] - 2021-10-25
+
+### Fixed
+- Runtime depenency loading
+
+## [0.0.6] - 2021-10-25
+
+### Added
+- CHANGELOG
+
+### Changed
+- Update installation instructions in README
+- Promote jsonapi-query-builder and jsonapi-serializer to runtime dependencies
+
+## [0.0.5] - 2021-10-06
+
+### Updated
+- Bump jsonapi-query_builder dependency
+- Bump Nokogiri dependency (due to CVE)
+
+[Unreleased]: https://github.com/infinum/infinum-json-api-setup/compare/v0.0.8...HEAD
+[0.0.8]: https://github.com/infinum/infinum-json-api-setup/compare/v0.0.7...v0.0.8
+[0.0.7]: https://github.com/infinum/infinum-json-api-setup/compare/v0.0.6...v0.0.7
+[0.0.6]: https://github.com/infinum/infinum-json-api-setup/compare/v0.0.5...v0.0.6
+[0.0.5]: https://github.com/infinum/infinum-json-api-setup/compare/v0.0.4...v0.0.5
