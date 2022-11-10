@@ -149,6 +149,20 @@ expect(response).to include_error_detail('name has been taken')
 expect(response).to include_related_resource('user', user.id)
 ```
 
+## Development
+
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `bundle exec rspec` to run the tests.
+
+## Release
+To release a new version
+  - update the version number in `version.rb`,
+  - update Gemfile lockfiles (for each Ruby version run `bundle exec rake matrix:install`),
+  - update the `CHANGELOG.md`,
+  - and then run `bundle exec rake release`,
+    - which will create a git tag for the version
+    - push git commits and tags
+    - and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/infinum/infinum-json-api-setup. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
