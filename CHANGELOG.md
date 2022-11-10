@@ -6,8 +6,13 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ## [Unreleased]
 
-### Changes
+### Changed
 - Reformat CHANGELOG according to infinum/open-source-project-template
+- Document development setup
+- Document release procedure
+
+### Added
+- CODE_OF_CONDUCT.md
 
 ## [0.0.8] - 2021-10-25
 
