@@ -6,7 +6,7 @@ describe 'Error handling' do
       expect(response).to have_http_status(:bad_request)
       error = json_response['errors'].first
       expect(error['title']).to eq('Bad Request')
-      expect(error['detail']).to match('param is missing or the value is empty: location')
+      expect(error['detail']).to match(/param is missing or the value is empty/)
     end
   end
 

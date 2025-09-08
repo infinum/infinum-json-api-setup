@@ -16,7 +16,7 @@ describe InfinumJsonApiSetup::RSpec::Matchers::HaveEmptyData do
 
         expect do
           expect(response).to have_empty_data
-        end.to fail_with("Expected response data({\"a\"=>1}) to be empty, but isn't")
+        end.to fail_with("Expected response data(#{{ "a" => 1 }}) to be empty, but isn't")
       end
     end
 

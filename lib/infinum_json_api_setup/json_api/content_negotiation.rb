@@ -16,7 +16,7 @@ module InfinumJsonApiSetup
       end
 
       def valid_content_type?
-        return true if request.body.size.zero?
+        return true if request.body.blank?
 
         request.content_mime_type == Mime.fetch(:json_api)
       end
