@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'jsonapi-query_builder'
   s.add_runtime_dependency 'jsonapi-serializer'
   s.add_runtime_dependency 'json_schemer', '~> 0.2'
-  s.add_runtime_dependency 'pagy'
+  s.add_runtime_dependency 'pagy', '~> 8.0'
   s.add_runtime_dependency 'rails'
   s.add_runtime_dependency 'responders'
 end
