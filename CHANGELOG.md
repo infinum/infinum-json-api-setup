@@ -8,6 +8,7 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ### Changes
 - Reformat CHANGELOG according to infinum/open-source-project-template
+- Drop support for Rails 6.1
 
 ## [0.0.8] - 2021-10-25
 
