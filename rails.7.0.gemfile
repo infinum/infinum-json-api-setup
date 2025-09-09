@@ -3,5 +3,10 @@ eval(File.read(File.expand_path('base.gemfile', __dir__))) # rubocop:disable Sec
 gem 'gemika'
 gem 'rails', '~> 7.0.0'
 gem 'rspec-rails', '~> 7.0', require: false
+gem 'base64'
+gem 'bigdecimal'
+gem 'mutex_m'
+gem 'observer'
+gem 'drb'
 
 gemspec
