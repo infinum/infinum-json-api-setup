@@ -2,7 +2,7 @@ module InfinumJsonApiSetup
   module RSpec
     module Matchers
       # @return [InfinumJsonApiSetup::Rspec::Matchers::HaveEmptyData]
-      def have_empty_data # rubocop:disable Naming/PredicateName
+      def have_empty_data # rubocop:disable Naming/PredicatePrefix
         HaveEmptyData.new
       end
 

@@ -3,7 +3,7 @@ module InfinumJsonApiSetup
     module Matchers
       # @param [String] pointer
       # @return [InfinumJsonApiSetup::Rspec::Matchers::HaveErrorPointer]
-      def have_error_pointer(pointer) # rubocop:disable Naming/PredicateName
+      def have_error_pointer(pointer) # rubocop:disable Naming/PredicatePrefix
         HaveErrorPointer.new(pointer)
       end
 

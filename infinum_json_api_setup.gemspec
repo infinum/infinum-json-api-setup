@@ -13,11 +13,11 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '> 2.7'
   s.metadata = { 'rubygems_mfa_required' => 'true' }
 
-  s.add_runtime_dependency 'jsonapi_parameters'
-  s.add_runtime_dependency 'jsonapi-query_builder'
-  s.add_runtime_dependency 'jsonapi-serializer'
-  s.add_runtime_dependency 'json_schemer', '~> 0.2'
-  s.add_runtime_dependency 'pagy', '~> 8.0'
-  s.add_runtime_dependency 'rails'
-  s.add_runtime_dependency 'responders'
+  s.add_dependency 'jsonapi_parameters'
+  s.add_dependency 'jsonapi-query_builder'
+  s.add_dependency 'jsonapi-serializer'
+  s.add_dependency 'json_schemer', '~> 0.2'
+  s.add_dependency 'pagy', '~> 8.0'
+  s.add_dependency 'rails'
+  s.add_dependency 'responders'
 end
