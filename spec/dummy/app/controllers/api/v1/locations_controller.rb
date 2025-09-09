@@ -49,7 +49,7 @@ module Api
       end
 
       def permitted_params
-        params.require(:location).permit(:latitude, :longitude) # rubocop:disable Rails/StrongParametersExpect
+        params.require(:location).permit(:latitude, :longitude)
       end
 
       def authorize(record)
