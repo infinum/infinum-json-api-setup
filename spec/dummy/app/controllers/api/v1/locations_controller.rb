@@ -44,8 +44,8 @@ module Api
 
       private
 
-      def with_locale(&block)
-        I18n.with_locale(params.fetch(:locale, :en), &block)
+      def with_locale(&)
+        I18n.with_locale(params.fetch(:locale, :en), &)
       end
 
       def permitted_params
