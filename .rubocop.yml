@@ -22,7 +22,7 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 3.2
   Exclude:
     - 'spec/dummy/db/schema.rb'
     - 'spec/dummy/db/migrate/*.rb'
