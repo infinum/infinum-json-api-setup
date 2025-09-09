@@ -1,12 +1,8 @@
 eval(File.read(File.expand_path('base.gemfile', __dir__))) # rubocop:disable Security/Eval
 
-gem 'base64'
-gem 'bigdecimal'
-gem 'drb'
 gem 'gemika'
-gem 'mutex_m'
 gem 'observer'
-gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 7.1.0'
 gem 'rspec-rails', '~> 7.0', require: false
 
 gemspec

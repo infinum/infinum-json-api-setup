@@ -21,11 +21,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-        - ruby: 3.4.5
-          gemfile: rails.7.0.gemfile
-        - ruby: 3.4.5
-          gemfile: rails.8.0.gemfile
+        ruby: ['3.2.9', '3.3.9', '3.4.5']
+        gemfile: ['rails.7.1.gemfile', 'rails.8.0.gemfile']
     env:
       BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
     steps:
