@@ -4,5 +4,4 @@ gem 'gemika'
 gem 'rails', '~> 8.0.0'
 gem 'rspec-rails', '~> 8.0', require: false
 
-
 gemspec
