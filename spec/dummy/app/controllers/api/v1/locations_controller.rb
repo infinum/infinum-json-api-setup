@@ -12,16 +12,16 @@ module Api
         respond_with q.results, pagination_details: q.pagination_details
       end
 
-      # GET /api/v1/locations
-      def create
-        location = Location.create(permitted_params)
+      # GET /api/v1/locations/:id
+      def show
+        location = authorize(Location.find(params[:id]))
 
         respond_with location
       end
 
-      # GET /api/v1/locations/:id
-      def show
-        location = authorize(Location.find(params[:id]))
+      # GET /api/v1/locations
+      def create
+        location = Location.create(permitted_params)
 
         respond_with location
       end
@@ -44,8 +44,8 @@ module Api
 
       private
 
-      def with_locale(&block)
-        I18n.with_locale(params.fetch(:locale, :en), &block)
+      def with_locale(&)
+        I18n.with_locale(params.fetch(:locale, :en), &)
       end
 
       def permitted_params

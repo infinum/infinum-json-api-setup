@@ -12,11 +12,12 @@ describe InfinumJsonApiSetup::RSpec::Matchers::HaveEmptyData do
 
     context "when data isn't empty" do
       it 'fails and describes failure reason' do
-        response = response_with_body(JSON.dump(data: { a: 1 }))
+        data = { 'a' => 1 }
+        response = response_with_body(JSON.dump(data:))
 
         expect do
           expect(response).to have_empty_data
-        end.to fail_with("Expected response data({\"a\"=>1}) to be empty, but isn't")
+        end.to fail_with("Expected response data(#{data}) to be empty, but isn't")
       end
     end
 

@@ -1,0 +1,8 @@
+eval(File.read(File.expand_path('base.gemfile', __dir__))) # rubocop:disable Security/Eval
+
+gem 'gemika'
+gem 'observer'
+gem 'rails', '~> 7.1.0'
+gem 'rspec-rails', '~> 7.0', require: false
+
+gemspec

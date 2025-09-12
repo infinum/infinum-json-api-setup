@@ -11,7 +11,7 @@ class Location < ApplicationRecord
   X_AXIS = :x_axis
   Y_AXIS = :y_axis
 
-  has_many :labels, class_name: 'LocationLabel'
+  has_many :labels, class_name: 'LocationLabel', dependent: :destroy
   validates :latitude, numericality: { greater_than_or_equal_to: MIN_LATITUDE,
                                        less_than_or_equal_to: MAX_LATITUDE }
   validates :longitude, numericality: { greater_than_or_equal_to: MIN_LONGITUDE,

@@ -3,7 +3,7 @@ module InfinumJsonApiSetup
     module Matchers
       # @param [Integer] expected_count
       # @return [InfinumJsonApiSetup::Rspec::Matchers::HaveResourceCountOf]
-      def have_resource_count_of(expected_count) # rubocop:disable Naming/PredicateName
+      def have_resource_count_of(expected_count) # rubocop:disable Naming/PredicatePrefix
         HaveResourceCountOf.new(expected_count)
       end
 
