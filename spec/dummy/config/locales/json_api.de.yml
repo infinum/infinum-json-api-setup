@@ -1,0 +1,24 @@
+de:
+  json_api:
+    errors:
+      bad_request:
+        title: Ungültige Anfrage
+        detail: Ungültige Anfrage
+        invalid_locale: Ungültige Sprache
+      not_found:
+        title: Nicht gefunden
+        detail: Ressource nicht gefunden
+      forbidden:
+        title: Verboten
+        detail: Sie dürfen diese Aktion nicht ausführen
+      unauthorized:
+        title: Nicht autorisiert
+        detail: Sie müssen angemeldet sein, um diese Aktion auszuführen
+      unprocessable_entity:
+        title: Nicht verarbeitbar
+        detail: Anfrage kann nicht verarbeitet werden
+      internal_server_error:
+        title: Interner Fehler
+        detail: Ein interner Fehler ist aufgetreten
+
+

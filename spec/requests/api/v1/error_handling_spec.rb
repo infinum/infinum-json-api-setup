@@ -35,11 +35,11 @@ describe 'Error handling' do
 
     context 'with another locale' do
       it 'responds with localized error message' do
-        get '/api/v1/locations/0', headers: default_headers.merge('Accept-Language' => 'hr')
+        get '/api/v1/locations/0', headers: default_headers.merge('Accept-Language' => 'de')
 
         expect(response).to have_http_status(:not_found)
-        expect(json_response['errors'].first['title']).to eq('Nije pronađen')
-        expect(json_response['errors'].first['detail']).to eq('Resurs nije pronađen')
+        expect(json_response['errors'].first['title']).to eq('Nicht gefunden')
+        expect(json_response['errors'].first['detail']).to eq('Ressource nicht gefunden')
       end
     end
   end
@@ -58,11 +58,11 @@ describe 'Error handling' do
 
     context 'with another locale' do
       it 'responds with localized error message' do
-        get "/api/v1/locations/#{loc.id}", headers: default_headers.merge('Accept-Language' => 'hr')
+        get "/api/v1/locations/#{loc.id}", headers: default_headers.merge('Accept-Language' => 'de')
 
         expect(response).to have_http_status(:forbidden)
-        expect(json_response['errors'].first['title']).to eq('Zabranjeno')
-        expect(json_response['errors'].first['detail']).to eq('Nije Vam dozvoljeno izvršiti ovu radnju')
+        expect(json_response['errors'].first['title']).to eq('Verboten')
+        expect(json_response['errors'].first['detail']).to eq('Sie dürfen diese Aktion nicht ausführen')
       end
     end
   end
