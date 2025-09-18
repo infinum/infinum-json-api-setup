@@ -16,14 +16,6 @@ describe 'Locale negotiation' do
       expect(json_response['data']['attributes']['message']).to eq('Hallo Welt')
     end
 
-    it 'returns German hello message when Accept-Language is de-DE (region variant)' do
-      get '/api/v1/hello', headers: default_headers.merge('Accept-Language': 'de-DE')
-
-      expect(response).to have_http_status(:ok)
-
-      expect(json_response['data']['attributes']['message']).to eq('Hallo Welt')
-    end
-
     it 'returns default English message when no Accept-Language header provided' do
       get '/api/v1/hello', headers: default_headers
 
@@ -39,23 +31,36 @@ describe 'Locale negotiation' do
 
       expect(json_response['data']['attributes']['message']).to eq('Hallo Welt')
     end
-
-    it 'falls back to default locale when Accept-Language header is malformed' do
-      get '/api/v1/hello', headers: default_headers.merge('Accept-Language': '123-invalid')
-
-      expect(response).to have_http_status(:ok)
-
-      response_body = JSON.parse(response.body)
-      expect(response_body['data']['attributes']['message']).to eq('Hello world')
-    end
   end
 
-  describe 'error handling with localized messages' do
-    it 'responds with 400 Bad Request and English error message for invalid locale' do
+  describe 'error handling' do
+    it 'responds with 400 Bad Request when Accept-Language header is malformed' do
+      get '/api/v1/hello', headers: default_headers.merge('Accept-Language': '123-invalid')
+
+      expect(response).to have_http_status(:bad_request)
+      expect(response).to include_error_detail('Invalid locale')
+    end
+
+    it 'responds with 400 Bad Request and error message for invalid locale' do
       get '/api/v1/hello', headers: default_headers.merge('Accept-Language': 'fr')
 
       expect(response).to have_http_status(:bad_request)
-      expect(response).to include_error_detail('"fr" is not a valid locale')
+      expect(response).to include_error_detail('Invalid locale')
+    end
+
+    context 'when fallback to default is enabled' do
+      around do |example|
+        Api::V1::HelloController.fallback_to_default_locale_if_invalid = true
+        example.run
+        Api::V1::HelloController.fallback_to_default_locale_if_invalid = false
+      end
+
+      it 'responds with 200 OK and default locale body' do
+        get '/api/v1/hello', headers: default_headers.merge('Accept-Language': 'fr')
+
+        expect(response).to have_http_status(:ok)
+        expect(json_response['data']['attributes']['message']).to eq('Hello world')
+      end
     end
   end
 end

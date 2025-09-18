@@ -1,5 +1,6 @@
 require 'rails'
 
+require 'accept_language'
 require 'json'
 require 'jsonapi_parameters'
 require 'jsonapi/serializer'
