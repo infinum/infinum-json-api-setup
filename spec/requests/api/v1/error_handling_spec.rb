@@ -5,8 +5,7 @@ describe 'Error handling' do
 
       expect(response).to have_http_status(:bad_request)
       error = json_response['errors'].first
-      expect(error['title']).to eq('Bad Request')
-      expect(error['detail']).to match(/param is missing or the value is empty/)
+      expect(error).to include('title' => 'Bad Request', 'detail' => match(/param is missing or the value is empty/))
     end
   end
 
@@ -29,8 +28,7 @@ describe 'Error handling' do
       get '/api/v1/locations/0', headers: default_headers
 
       expect(response).to have_http_status(:not_found)
-      expect(json_response['errors'].first['title']).to eq('Not found')
-      expect(json_response['errors'].first['detail']).to eq('Resource not found')
+      expect(json_response['errors'].first).to include('title' => 'Not found', 'detail' => 'Resource not found')
     end
 
     context 'with another locale' do
@@ -38,8 +36,8 @@ describe 'Error handling' do
         get '/api/v1/locations/0', headers: default_headers.merge('Accept-Language' => 'de')
 
         expect(response).to have_http_status(:not_found)
-        expect(json_response['errors'].first['title']).to eq('Nicht gefunden')
-        expect(json_response['errors'].first['detail']).to eq('Ressource nicht gefunden')
+        expect(json_response['errors'].first).to include('title' => 'Nicht gefunden',
+                                                         'detail' => 'Ressource nicht gefunden')
       end
     end
   end
@@ -51,9 +49,8 @@ describe 'Error handling' do
       get "/api/v1/locations/#{loc.id}", headers: default_headers
 
       expect(response).to have_http_status(:forbidden)
-      expect(json_response['errors'].first['title']).to eq('Forbidden')
-      expect(json_response['errors'].first['detail'])
-        .to eq('You are not allowed to perform this action')
+      expect(json_response['errors'].first).to include('title' => 'Forbidden',
+                                                       'detail' => 'You are not allowed to perform this action')
     end
 
     context 'with another locale' do
@@ -61,8 +58,8 @@ describe 'Error handling' do
         get "/api/v1/locations/#{loc.id}", headers: default_headers.merge('Accept-Language' => 'de')
 
         expect(response).to have_http_status(:forbidden)
-        expect(json_response['errors'].first['title']).to eq('Verboten')
-        expect(json_response['errors'].first['detail']).to eq('Sie dürfen diese Aktion nicht ausführen')
+        expect(json_response['errors'].first).to include('title' => 'Verboten',
+                                                         'detail' => 'Sie dürfen diese Aktion nicht ausführen')
       end
     end
   end
@@ -85,8 +82,8 @@ describe 'Error handling' do
 
       expect(response).to have_http_status(:bad_request)
       error = json_response['errors'].first
-      expect(error['title']).to eq('Bad Request')
-      expect(error['detail']).to eq('title is not a permitted sort attribute')
+      expect(error).to include('title' => 'Bad Request',
+                               'detail' => 'title is not a permitted sort attribute')
     end
   end
 
@@ -110,8 +107,8 @@ describe 'Error handling' do
       get '/api/v1/locations/0', headers: default_headers
 
       expect(response).to have_http_status(:internal_server_error)
-      expect(json_response['errors'].first['title']).to eq('Internal Server Error')
-      expect(json_response['errors'].first['detail']).to eq('Something went wrong')
+      expect(json_response['errors'].first).to include('title' => 'Internal Server Error',
+                                                       'detail' => 'Something went wrong')
     end
   end
 
