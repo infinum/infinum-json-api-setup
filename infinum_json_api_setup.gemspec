@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'jsonapi-query_builder'
   s.add_dependency 'jsonapi-serializer'
   s.add_dependency 'json_schemer', '>= 0.2', '< 3'
+  s.add_dependency 'ostruct'
   s.add_dependency 'pagy', '~> 8.0'
   s.add_dependency 'rails'
   s.add_dependency 'responders'

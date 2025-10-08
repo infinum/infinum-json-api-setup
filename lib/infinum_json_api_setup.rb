@@ -5,6 +5,7 @@ require 'json'
 require 'jsonapi_parameters'
 require 'jsonapi/serializer'
 require 'json_schemer'
+require 'ostruct'
 require 'responders'
 
 require 'pagy'

@@ -7,6 +7,7 @@ PATH
       jsonapi-query_builder
       jsonapi-serializer
       jsonapi_parameters
+      ostruct
       pagy (~> 8.0)
       rails
       responders
@@ -174,6 +175,7 @@ GEM
     nokogiri (1.18.9-arm64-darwin)
       racc (~> 1.4)
     observer (0.1.2)
+    ostruct (0.6.3)
     overcommit (0.59.1)
       childprocess (>= 0.6.3, < 5)
       iniparse (~> 1.4)
