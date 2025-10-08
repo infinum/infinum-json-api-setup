@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 3.2'
   s.metadata = { 'rubygems_mfa_required' => 'true' }
 
+  s.add_dependency 'accept_language', '~> 2.0'
   s.add_dependency 'jsonapi_parameters'
   s.add_dependency 'jsonapi-query_builder'
   s.add_dependency 'jsonapi-serializer'

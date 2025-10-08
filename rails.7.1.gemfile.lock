@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     infinum_json_api_setup (0.0.8)
+      accept_language (~> 2.0)
       json_schemer (~> 0.2)
       jsonapi-query_builder
       jsonapi-serializer
@@ -13,6 +14,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    accept_language (2.0.8)
     actioncable (7.1.5.2)
       actionpack (= 7.1.5.2)
       activesupport (= 7.1.5.2)

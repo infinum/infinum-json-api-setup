@@ -3,8 +3,6 @@ module Api
     class LocationsController < BaseController
       include Pundit::Authorization
 
-      around_action :with_locale
-
       # GET /api/v1/locations
       def index
         q = Api::V1::Locations::Query.new(Location.all, params.to_unsafe_hash)
@@ -43,10 +41,6 @@ module Api
       end
 
       private
-
-      def with_locale(&)
-        I18n.with_locale(params.fetch(:locale, :en), &)
-      end
 
       def permitted_params
         params.require(:location).permit(:latitude, :longitude)

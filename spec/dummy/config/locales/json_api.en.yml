@@ -4,6 +4,7 @@ en:
       bad_request:
         title: Bad Request
         detail: Bad request
+        invalid_locale: Invalid locale
       not_found:
         title: Not found
         detail: Resource not found

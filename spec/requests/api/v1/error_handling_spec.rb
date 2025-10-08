@@ -5,8 +5,7 @@ describe 'Error handling' do
 
       expect(response).to have_http_status(:bad_request)
       error = json_response['errors'].first
-      expect(error['title']).to eq('Bad Request')
-      expect(error['detail']).to match(/param is missing or the value is empty/)
+      expect(error).to include('title' => 'Bad Request', 'detail' => match(/param is missing or the value is empty/))
     end
   end
 
@@ -29,20 +28,39 @@ describe 'Error handling' do
       get '/api/v1/locations/0', headers: default_headers
 
       expect(response).to have_http_status(:not_found)
-      expect(json_response['errors'].first['title']).to eq('Not found')
-      expect(json_response['errors'].first['detail']).to eq('Resource not found')
+      expect(json_response['errors'].first).to include('title' => 'Not found', 'detail' => 'Resource not found')
+    end
+
+    context 'with another locale' do
+      it 'responds with localized error message' do
+        get '/api/v1/locations/0', headers: default_headers.merge('Accept-Language' => 'de')
+
+        expect(response).to have_http_status(:not_found)
+        expect(json_response['errors'].first).to include('title' => 'Nicht gefunden',
+                                                         'detail' => 'Ressource nicht gefunden')
+      end
     end
   end
 
   context 'when client is not authorized to perform requested action' do
+    let(:loc) { create(:location, :fourth_quadrant) }
+
     it 'responds with 403 Forbidden' do
-      loc = create(:location, :fourth_quadrant)
       get "/api/v1/locations/#{loc.id}", headers: default_headers
 
       expect(response).to have_http_status(:forbidden)
-      expect(json_response['errors'].first['title']).to eq('Forbidden')
-      expect(json_response['errors'].first['detail'])
-        .to eq('You are not allowed to perform this action')
+      expect(json_response['errors'].first).to include('title' => 'Forbidden',
+                                                       'detail' => 'You are not allowed to perform this action')
+    end
+
+    context 'with another locale' do
+      it 'responds with localized error message' do
+        get "/api/v1/locations/#{loc.id}", headers: default_headers.merge('Accept-Language' => 'de')
+
+        expect(response).to have_http_status(:forbidden)
+        expect(json_response['errors'].first).to include('title' => 'Verboten',
+                                                         'detail' => 'Sie dürfen diese Aktion nicht ausführen')
+      end
     end
   end
 
@@ -64,8 +82,8 @@ describe 'Error handling' do
 
       expect(response).to have_http_status(:bad_request)
       error = json_response['errors'].first
-      expect(error['title']).to eq('Bad Request')
-      expect(error['detail']).to eq('title is not a permitted sort attribute')
+      expect(error).to include('title' => 'Bad Request',
+                               'detail' => 'title is not a permitted sort attribute')
     end
   end
 
@@ -89,14 +107,14 @@ describe 'Error handling' do
       get '/api/v1/locations/0', headers: default_headers
 
       expect(response).to have_http_status(:internal_server_error)
-      expect(json_response['errors'].first['title']).to eq('Internal Server Error')
-      expect(json_response['errors'].first['detail']).to eq('Something went wrong')
+      expect(json_response['errors'].first).to include('title' => 'Internal Server Error',
+                                                       'detail' => 'Something went wrong')
     end
   end
 
   context 'when client requests invalid locale' do
-    it 'responds with 500 InternalServerError' do
-      get '/api/v1/locations?locale=--', headers: default_headers
+    it 'responds with 400 BadRequest' do
+      get '/api/v1/locations', headers: default_headers.merge('Accept-Language' => 'fr')
 
       expect(response).to have_http_status(:bad_request)
       expect(json_response['errors'].first['title']).to eq('Bad Request')
