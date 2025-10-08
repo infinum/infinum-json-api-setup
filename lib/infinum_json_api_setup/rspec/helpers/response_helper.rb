@@ -24,7 +24,7 @@ module InfinumJsonApiSetup
           case response_type
           when :item then json_response.dig(:data, :relationships)
           when :collection then json_response[:data].pluck(:relationships)
-          else raise ArgumentError ':response_type must be one of [:item, :collection]'
+          else raise ArgumentError, ':response_type must be one of [:item, :collection]'
           end
         end
 

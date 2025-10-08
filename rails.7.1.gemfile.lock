@@ -3,10 +3,11 @@ PATH
   specs:
     infinum_json_api_setup (0.0.8)
       accept_language (~> 2.0)
-      json_schemer (~> 0.2)
+      json_schemer (>= 0.2, < 3)
       jsonapi-query_builder
       jsonapi-serializer
       jsonapi_parameters
+      ostruct
       pagy (~> 8.0)
       rails
       responders
@@ -109,8 +110,6 @@ GEM
     diff-lcs (1.6.2)
     docile (1.4.0)
     drb (2.2.3)
-    ecma-re-validator (0.4.0)
-      regexp_parser (~> 2.2)
     erb (5.0.2)
     erubi (1.13.1)
     factory_bot (6.2.1)
@@ -130,11 +129,11 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.13.2)
-    json_schemer (0.2.21)
-      ecma-re-validator (~> 0.3)
+    json_schemer (2.4.0)
+      bigdecimal
       hana (~> 1.3)
       regexp_parser (~> 2.0)
-      uri_template (~> 0.7)
+      simpleidn (~> 0.2)
     jsonapi-query_builder (0.3.0)
       activerecord (>= 5)
       pagy (>= 3.5)
@@ -176,6 +175,7 @@ GEM
     nokogiri (1.18.9-arm64-darwin)
       racc (~> 1.4)
     observer (0.1.2)
+    ostruct (0.6.3)
     overcommit (0.59.1)
       childprocess (>= 0.6.3, < 5)
       iniparse (~> 1.4)
@@ -319,6 +319,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
+    simpleidn (0.2.3)
     stringio (3.1.7)
     thor (1.4.0)
     timeout (0.4.3)
@@ -327,7 +328,6 @@ GEM
     unicode-display_width (3.1.5)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
-    uri_template (0.7.0)
     websocket-driver (0.8.0)
       base64
       websocket-extensions (>= 0.1.0)
