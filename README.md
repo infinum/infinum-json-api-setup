@@ -24,6 +24,7 @@ module Api
   class BaseController < ActionController::API
     include InfinumJsonApiSetup::JsonApi::ErrorHandling
     include InfinumJsonApiSetup::JsonApi::ContentNegotiation
+    include InfinumJsonApiSetup::JsonApi::LocaleNegotiation
 
     self.responder = InfinumJsonApiSetup::JsonApi::Responder
     respond_to :json_api
@@ -70,6 +71,13 @@ This section explains the under-the-hood behavior of the library.
 
 ### Content negotiation
 `InfinumJsonApiSetup::JsonApi::ContentNegotiation` module is designed to integrate [server responsibilities](https://jsonapi.org/format/#content-negotiation-servers) of content negotiation protocol described by the JSON:API specification.
+
+### Locale negotiation
+`InfinumJsonApiSetup::JsonApi::LocaleNegotiation` module ensures that request handling happens within the locale best matching the `Accept-Language` header.
+
+- **Default behavior:** locale falls back to the application's default when the header is missing.
+- **Invalid locales:** enable graceful fallback by setting `self.fallback_to_default_locale_if_invalid = true` in your controller when you want to disregard unrecognized locales instead of raising `json_api.errors.bad_request.invalid_locale`.
+- **Error handling:** when fallback is disabled (default), requests with invalid locales trigger a JSON:API formatted bad request response.
 
 ### Error handling
 `InfinumJsonApiSetup::JsonApi::ErrorHandling` module is designed to catch and handle common exceptions that might bubble up when processing a request.
