@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    infinum_json_api_setup (0.0.8)
+    infinum_json_api_setup (0.1.0)
       accept_language (~> 2.0)
       json_schemer (>= 0.2, < 3)
       jsonapi-query_builder
@@ -210,7 +210,7 @@ GEM
     pundit (2.5.0)
       activesupport (>= 3.0.0)
     racc (1.8.1)
-    rack (3.2.0)
+    rack (3.2.4)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
