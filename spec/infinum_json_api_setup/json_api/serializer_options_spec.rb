@@ -24,6 +24,10 @@ describe InfinumJsonApiSetup::JsonApi::SerializerOptions do
     )
   end
 
+  before do
+    allow(Rails.application.routes.url_helpers).to receive(:url_for).and_return('http://example.com')
+  end
+
   it 'includes pagination meta' do
     expect(built_options[:meta]).to include(
       current_page: 1,
