@@ -66,6 +66,17 @@ def destroy
 end
 ```
 
+For paginated collections, pass `pagination_details` from your query object. You can add extra collection-level fields to `meta`; they are merged with pagination meta instead of replacing it.
+```ruby
+def index
+  q = Users::Query.new(User.all, params.to_unsafe_hash)
+
+  respond_with q.results,
+               pagination_details: q.pagination_details,
+               meta: { total_unread: current_user.unread_notifications_count }
+end
+```
+
 ## Internals
 This section explains the under-the-hood behavior of the library.
 

@@ -8,6 +8,11 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ### Changes
 
+## [0.1.1] - 2026-08-11
+
+### Fixed
+- Merge controller-provided `meta` into pagination meta instead of replacing it when rendering paginated JSON:API collections
+
 ## [0.1.0] - 2025-11-03
 
 ### Added
