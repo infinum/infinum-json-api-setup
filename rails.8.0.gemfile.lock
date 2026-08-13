@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    infinum_json_api_setup (0.1.0)
+    infinum_json_api_setup (0.1.1)
       accept_language (~> 2.0)
       json_schemer (>= 0.2, < 3)
       jsonapi-query_builder

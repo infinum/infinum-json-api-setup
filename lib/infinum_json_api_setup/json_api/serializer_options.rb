@@ -4,9 +4,11 @@ module InfinumJsonApiSetup
       # @param [Hash] opts
       # @option opts [Hash] :params
       # @option opts [Object] :pagination_details
-      def initialize(params:, pagination_details:)
+      # @option opts [Hash] :extra_meta additional collection meta merged into pagination meta
+      def initialize(params:, pagination_details:, extra_meta: nil)
         @params = params
         @pagination_details = pagination_details
+        @extra_meta = extra_meta || {}
       end
 
       # @return [Hash]
@@ -23,8 +25,13 @@ module InfinumJsonApiSetup
 
       attr_reader :params
       attr_reader :pagination_details
+      attr_reader :extra_meta
 
       def meta
+        pagination_meta.merge(extra_meta)
+      end
+
+      def pagination_meta
         return {} unless pagination_details
 
         {

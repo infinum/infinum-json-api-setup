@@ -19,10 +19,12 @@ ActiveSupport.on_load(:action_controller) do
         "#{controller_path.classify.pluralize}::Serializer".constantize
       end
       options = InfinumJsonApiSetup::JsonApi::SerializerOptions.new(
-        params: params.to_unsafe_h, pagination_details: opts[:pagination_details]
+        params: params.to_unsafe_h,
+        pagination_details: opts[:pagination_details],
+        extra_meta: opts[:meta]
       ).build
 
-      serializer.new(resources, options.merge(opts)).serializable_hash.to_json
+      serializer.new(resources, options.merge(opts.except(:meta))).serializable_hash.to_json
     end
   end
 end
