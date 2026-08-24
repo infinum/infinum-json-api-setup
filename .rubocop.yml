@@ -21,9 +21,19 @@ Style/AccessorGrouping:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Rails/StrongParametersExpect:
+  Enabled: false
+
+RSpecRails/HttpStatusNameConsistency:
+  Enabled: false
+
+RSpec/MatchWithSimpleRegex:
+  Enabled: false
+
 AllCops:
   TargetRubyVersion: 3.2
   Exclude:
     - 'spec/dummy/db/schema.rb'
     - 'spec/dummy/db/migrate/*.rb'
+    - 'spec/dummy/bin/setup'
   NewCops: enable
