@@ -12,7 +12,7 @@ module Api
 
       # GET /api/v1/locations/:id
       def show
-        location = authorize(Location.find(params.expect(:id)))
+        location = authorize(Location.find(params[:id]))
 
         respond_with location
       end
@@ -26,7 +26,7 @@ module Api
 
       # PUT/PATCH /api/v1/locations/:id
       def update
-        location = authorize(Location.find(params.expect(:id)))
+        location = authorize(Location.find(params[:id]))
         location.update(permitted_params)
 
         respond_with location
@@ -34,7 +34,7 @@ module Api
 
       # DELETE /api/v1/locations/:id
       def destroy
-        location = authorize(Location.find(params.expect(:id)))
+        location = authorize(Location.find(params[:id]))
         location.destroy
 
         respond_with location
@@ -43,7 +43,7 @@ module Api
       private
 
       def permitted_params
-        params.expect(location: [:latitude, :longitude])
+        params.require(:location).permit(:latitude, :longitude)
       end
 
       def authorize(record)

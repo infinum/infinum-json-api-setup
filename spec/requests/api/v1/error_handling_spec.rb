@@ -5,7 +5,7 @@ describe 'Error handling' do
 
       expect(response).to have_http_status(:bad_request)
       error = json_response['errors'].first
-      expect(error).to include('title' => 'Bad Request', 'detail' => include('param is missing or the value is empty'))
+      expect(error).to include('title' => 'Bad Request', 'detail' => match(/param is missing or the value is empty/))
     end
   end
 
@@ -15,7 +15,7 @@ describe 'Error handling' do
 
       post '/api/v1/locations', params: { location: params }.to_json, headers: default_headers
 
-      expect(response).to have_http_status(:unprocessable_content)
+      expect(response).to have_http_status(:unprocessable_entity)
       expect(json_response['errors'].pluck('source')).to contain_exactly(
         { 'parameter' => 'latitude', 'pointer' => 'data/attributes/latitude' },
         { 'parameter' => 'longitude', 'pointer' => 'data/attributes/longitude' }
