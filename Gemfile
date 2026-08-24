@@ -7,8 +7,8 @@ gem 'rspec-rails', '~> 8.0', require: false
 
 gem 'bundler-audit', require: false
 gem 'cgi', require: false
-gem 'factory_bot', '~> 6.2', require: false
-gem 'faker', '~> 2.18', require: false
+gem 'factory_bot', '~> 6.2'
+gem 'faker', '~> 2.18'
 gem 'overcommit', '~> 0.58', require: false
 gem 'pg'
 gem 'pry-rails'
