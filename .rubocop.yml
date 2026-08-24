@@ -26,5 +26,4 @@ AllCops:
   Exclude:
     - 'spec/dummy/db/schema.rb'
     - 'spec/dummy/db/migrate/*.rb'
-    - 'vendor/**/*'
   NewCops: enable
