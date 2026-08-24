@@ -48,7 +48,7 @@ describe 'Responder' do
         put "/api/v1/locations/#{location.id}", params: { location: params }.to_json,
                                                 headers: default_headers
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end
@@ -74,7 +74,7 @@ describe 'Responder' do
         patch "/api/v1/locations/#{location.id}", params: { location: params }.to_json,
                                                   headers: default_headers
 
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end

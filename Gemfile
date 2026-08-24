@@ -10,6 +10,7 @@ gem 'pg'
 gem 'pry-rails'
 gem 'pundit'
 gem 'rake', require: false
+gem 'rbs', '~> 4.1.0'
 gem 'rubocop', '~> 1.0', require: false
 gem 'rubocop-infinum', require: false
 gem 'rubocop-rake', require: false
