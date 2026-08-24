@@ -22,20 +22,14 @@ jobs:
       fail-fast: false
       matrix:
         ruby: ['3.2.9', '3.3.9', '3.4.5']
-        gemfile: ['rails.7.1.gemfile', 'rails.8.0.gemfile']
-    env:
-      BUNDLE_GEMFILE: "${{ matrix.gemfile }}"
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: "${{ matrix.ruby }}"
-    - name: Install dependencies
-      run: bundle install
+        bundler-cache: true
     - name: Setup database
-      env:
-        BUNDLE_GEMFILE: "../../${{ matrix.gemfile }}"
       run: |
         cd spec/dummy
         bundle exec rake db:test:prepare
