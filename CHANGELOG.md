@@ -8,6 +8,9 @@ This projects adheres to [Semantic Versioning](https://semver.org/) and [Keep a 
 
 ### Changes
 
+- Drop gemika multi-Rails Gemfile matrix; use a single Gemfile targeting Rails 8
+- Remove shared `base.gemfile` eval pattern that broke downstream Gemfile parsers
+
 ## [0.1.1] - 2026-08-13
 
 ### Fixed

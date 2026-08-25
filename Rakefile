@@ -1,4 +1,5 @@
-require 'bundler/gem_tasks'
-require 'gemika/tasks'
+# frozen_string_literal: true
 
-task default: 'matrix:spec'
+require 'bundler/gem_tasks'
+
+task default: :spec
